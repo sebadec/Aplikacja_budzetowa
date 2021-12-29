@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budżet Osobisty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <nav>
+        <a href="menu_glowne.html">Sebastian Dec</a>
+        <ul>
+            <li>
+                <a href="dodaj_przychod.html">Dodaj przychód</a>
+            </li>
+            <li>
+                <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+            </li>
+            <li>
+                <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+            </li>
+            <li>
+                <a href="ustawienia.html">Ustawienia</a>
+            </li>
+
+        </ul>
+        <a href="strona_startowa.html">Wyloguj się</a>
+    </nav>
+    <main>
+        <h1>Dodaj wydatek</h1>
+
+        <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
+
+        <form action="strona_startowa.html">
+            <p>
+                <label for="kwota">Podaj kwotę: </label>
+                <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
+            </p>
+
+            <p>
+                <label for="data">Wybierz datę: </label>
+                <input type="date" id="data" required>
+            </p>
+
+            <label for="Platnosc">Sposób płatności:</label>
+            <select name="Platnosc" id="Platnosc">
+                <option value="karta_kredytowa" selected>Karta kredytowa</option>
+                <option value="gotowka">Gotówka</option>
+                <option value="karta_debetowa">Karta debetowa</option>
+            </select>
+
+            <label for="Kategoria">Kategoria:</label>
+            <select name="Kategoria" id="Kategoria">
+                <option value="jedzenie" selected>Jedzenie</option>
+                <option value="mieszkanie">Mieszkanie</option>
+                <option value="transport">Transport</option>
+                <option value="telekomunikacja">Telekomunikacja</option>
+                <option value="opieka_zdrowotna">Opieka zdrowotna</option>
+                <option value="ubranie">Ubranie</option>
+                <option value="higiena">Higiena</option>
+                <option value="dzieci">Dzieci</option>
+                <option value="rozrywka">Rozrywka</option>
+                <option value="wycieczka">Wycieczka</option>
+                <option value="szkolenia">Szkolenia</option>
+                <option value="ksiazki">Książki</option>
+                <option value="oszczednosci">Oszczędności</option>
+                <option value="emerytura">Na złotą jesień, czyli emeryturę</option>
+                <option value="splata_dlugow">Spłata długów</option>
+                <option value="darowizna">Darowizna</option>
+                <option value="inne">Inne wydatki</option>
+            </select>
+
+            <p>
+                <label for="komentarz">Komentarz</label>
+                <br>
+                <textarea id="komentarz" rows="5" cols="50" name="komentarz" placeholder="opcjonalnie"></textarea>
+            </p>
+
+            <button type="submit">Dodaj</button>
+
+            <button onclick="window.location.href='menu_glowne.html'">Anuluj</button>
+
+        </form>
+    </main>
+
+
+</body>
+
+</html>
