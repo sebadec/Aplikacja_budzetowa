@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budżet Osobisty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <nav>
+        <a href="menu_glowne.html">Sebastian Dec</a>
+        <ul>
+            <li>
+                <a href="dodaj_przychod.html">Dodaj przychód</a>
+            </li>
+            <li>
+                <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+            </li>
+            <li>
+                <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+            </li>
+            <li>
+                <a href="ustawienia.html">Ustawienia</a>
+            </li>
+
+        </ul>
+        <a href="strona_startowa.html">Wyloguj się</a>
+    </nav>
+    <main>
+        <h1>Bilans</h1>
+
+        <a>Przejżyj bilans swoich zysków i strat.</a>
+        <br>
+
+        <form action="strona_startowa.html">
+
+            <p>
+                <label for="Kategoria">Kategoria:</label>
+                <select name="Kategoria" id="Kategoria">
+                    <option value="bieżący miesiąc" selected>Bieżący miesiąc</option>
+                    <option value="poprzedni miesiąc">Poprzedni miesiąc</option>
+                    <option value="bieżący rok">Bieżący rok</option>
+                    <option value="niestandardowy">Niestandardowy</option>
+                </select>
+            </p>
+
+            <p>
+                <button type="submit">Generuj raport</button>
+                <button onclick="window.location.href='menu_glowne.html'">Anuluj</button>
+            </p>
+
+            <a>To niżej ma się pokazać (przykład).</a>
+
+        </form>
+
+        <div class="conteiner">
+            <div class="floatLeft">
+                <h1>Tabela</h1>
+                <table class="tg">
+                    <thead>
+                        <tr>
+                            <th class="tg-0pky">Bilans</th>
+                            <th class="tg-0lax"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tg-0lax">Przychody</td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Wynagrodzenie</td>
+                            <td class="tg-0lax">4000</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Odsetki bankowe</td>
+                            <td class="tg-0lax">5</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Sprzedaż na allegro</td>
+                            <td class="tg-0lax">95</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Inne</td>
+                            <td class="tg-0lax">100</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">SUMA</td>
+                            <td class="tg-0lax">4200</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Wydatki</td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Jedzenie</td>
+                            <td class="tg-0lax">600</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Mieszkanie</td>
+                            <td class="tg-0lax">1000</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Transport</td>
+                            <td class="tg-0lax">400</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">Telekomunikacja</td>
+                            <td class="tg-0lax">0</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">SUMA</td>
+                            <td class="tg-0lax">2000</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">BILANS</td>
+                            <td class="tg-0lax">2200</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax" colspan="2">Gratulacje, jesteś na plusie! :)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="floatRight">
+                <h1>Wykresy</h1>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>
