@@ -7,40 +7,290 @@
     <title>Budżet Osobisty</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
-    <nav>
-        <a href="menu_glowne.html">Sebastian Dec</a>
-        <ul>
-            <li>
-                <a href="dodaj_przychod.html">Dodaj przychód</a>
-            </li>
-            <li>
-                <a href="dodaj_wydatek.html">Dodaj wydatek</a>
-            </li>
-            <li>
-                <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
-            </li>
-            <li>
-                <a href="ustawienia.html">Ustawienia</a>
-            </li>
 
-        </ul>
-        <a href="strona_startowa.html">Wyloguj się</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow p-3 mb-5" id="xxx" aria-label="Menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sebastian Dec</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">O Mnie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">CV</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
+                            data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
+                        <ul class=" dropdown-menu" aria-labelledby="dropdown03">
+                    <li><a class="dropdown-item active" href="#">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
+                    <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
+                </ul>
+                </li>
+
+                </ul>
+                <blockquote class="blockquote text-right">
+                    <p class="mb-0">Większość z Was zna zalety programisty. Oczywiście są trzy: lenistwo,
+                        niecierpliwość i pycha.</p>
+                    <footer class="blockquote-footer text-right">Larry Wall<cite title="Source Title">Losowy
+                            cytat</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
     </nav>
-    <main>
-        <h1>Menu główne</h1>
 
-        <a>Dodaj przychód lub wydatek.</a>
-        <br>
-        <a>A może chcesz sprawdzić bilans?</a>
+    <div class="container">
+        <div class="row">
+            <div class="container col">
+                <nav class="floating-menu col-sm-4">
+                    <ul class="main-menu text-center">
+                        <li>
+                            <a href="#" class="ripple">Zalogój się
+                                <i class="fas fa-home fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">Dodaj przychód
+                                <i class="fas fa-home fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">Dodaj wydatek
+                                <i class="far fa-user fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">Przeglądaj bilans
+                                <i class="far fa-address-card fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">Ustawienia
+                                <i class="fas fa-cogs fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">Wyloguj się
+                                <i class="fab fa-blogger-b fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple"> Wyloguj się
+                                <i class="fab fa-blogger-b fa-lg"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ripple">
+                                <i class="fab fa-blogger-b fa-lg"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="menu-bg"></div>
+                </nav>
+            </div>
+            <div class="col">
+                <a href="menu_glowne.html">Sebastian Dec</a>
+                <ul>
+                    <li>
+                        <a href="dodaj_przychod.html">Dodaj przychód</a>
+                    </li>
+                    <li>
+                        <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                    </li>
+                    <li>
+                        <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                    </li>
+                    <li>
+                        <a href="ustawienia.html">Ustawienia</a>
+                    </li>
+
+                </ul>
+                <a href="strona_startowa.html">Wyloguj się</a>
+            </div>
+            <div class="col">
+                <main class="">
+                    <h1>Menu główne</h1>
+
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>A może chcesz sprawdzić bilans?</a>
+
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-danger">Left</button>
+                        <button type="button" class="btn btn-warning">Middle</button>
+                        <button type="button" class="btn btn-success">Right</button>
+                    </div>
+
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                    <a>Dodaj przychód lub wydatek.</a>
+                    <br>
+                </main>
+            </div>
+        </div>
+    </div>
 
 
-    </main>
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+    <script src="js/bootstrap.js"></script>
 </body>
 
 </html>
