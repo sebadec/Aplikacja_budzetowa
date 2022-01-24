@@ -1,7 +1,20 @@
+body{
+  ;
+}
+
 .navbar{
   background-color: blueviolet !important;
+}
 
-  
+.dropdown-item.active, .dropdown-item:active{
+color: rgb(43, 18, 182);
+text-decoration: none;
+background-color: #831d75;
+color: aliceblue;
+}
+
+.dropdown-item{
+
 }
 
 .blockquote-footer {
@@ -23,36 +36,27 @@ img {
 }
 
 #floating-menu {
-  
-background-image: linear-gradient(to bottom, blueviolet 0, violet 100%);
-
-position: fixed;
-
-top: 100px; 
-width: 30%; 
-left: 1%;
-border: 12px outset blueviolet;
+background-image: linear-gradient(to bottom, blueviolet 0, rgb(141, 3, 233) 80%);
+border: 5px outset blueviolet;
 border-radius: 50px;
 text-align: center;
-height: 50%;
-top: 50%;
-
 overflow: hidden;
-
 padding-top: 10px;
 padding-bottom: 10px;
-
-}
-
-.img #kalkulator {
-max-width: 30% !important;
+font-size: 2rem;
+line-height: 200%;
+position: none;
+padding: 10px;
+display: block;
+margin-left: auto;
+margin-right: auto;
 }
 
 ul {
 list-style-type: none;
 text-align: center;
 padding-left: 0px;
-position: relative;
+display:inline-block;
 }
 
 a {
@@ -63,10 +67,31 @@ a {
   text-align: center;
 }
 
-@media screen and (max-width: 768px){
-#floating-menu{
+a:hover {
+  color: rgb(182, 180, 176);
+}
+
+@media screen and (max-width: 1100px){
+.blockquote {
+font-size: 0.675em;;
 
 }
+
+@media screen and (max-width: 888px){
+#floating-menu{
+font-size: 1rem;
+width: 200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.blockquote {
+display: none;
+
+
+}
+
+
 
 
 
