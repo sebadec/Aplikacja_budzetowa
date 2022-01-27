@@ -21,7 +21,7 @@
   --light: #f8f9fa;
   --dark: #343a40;
 
---indigo: #4b0082;
+--indigo: #290046;
 --primary: blueviolet;
 }
 
@@ -32,6 +32,10 @@ body{
 img {
 max-width: 100px;
 height: auto; 
+}
+
+.navbar-brand {
+padding-top: 0;
 }
 
 .navbar{
@@ -99,6 +103,12 @@ a:hover {
   color: rgb(182, 180, 176);
 }
 
+#text-budget{
+  color: white;
+  text-align:justify;
+  margin: 1rem;
+}
+
 #text-in-main {
 list-style-type: none;
 color: white;
@@ -112,6 +122,7 @@ text-align: center;
 background-image: linear-gradient(to bottom, var(--primary) 0, var(--indigo) 80%);
 border: 5px outset var(--primary);
 border-radius: 50px;
+color: white;
 
 text-align: center;
 overflow: hidden;
@@ -146,6 +157,7 @@ width: 225px;
 }
 
 @media screen and (max-width: 888px){
+
 #floating-menu{
 font-size: 1rem;
 width: 200px;
@@ -156,14 +168,20 @@ position: relative;
 
 .blockquote {
 display: none;
+}
+
+.navbar-collapse{
+flex-grow: 0;
+}
 
 }
 
-
+@media screen and (max-width: 400px){
+#text-budget{
+text-align:left;
+font-size: small;
 }
-
-
-
+}
 
 /*
 
