@@ -29,6 +29,11 @@ body{
 
 }
 
+img {
+max-width: 100px;
+height: auto; 
+}
+
 .navbar{
   background-color: var(--primary) !important;
 }
@@ -57,11 +62,6 @@ color: aliceblue;
   color: #ced3d6
 }
 
-img {
-    max-width: 100%;
-    margin:auto
-}
-
 #floating-menu {
 background-image: linear-gradient(to bottom, var(--primary) 0, var(--indigo) 80%);
 border: 5px outset var(--primary);
@@ -72,11 +72,12 @@ padding-top: 10px;
 padding-bottom: 10px;
 font-size: 2rem;
 line-height: 200%;
-position: none;
+position: fixed;
 padding: 10px;
 display: block;
 margin-left: auto;
 margin-right: auto;
+width: 350px;
 }
 
 ul {
@@ -98,10 +99,50 @@ a:hover {
   color: rgb(182, 180, 176);
 }
 
+#text-in-main {
+list-style-type: none;
+color: white;
+font-size: 0.875em;
+text-decoration: none;
+text-align: center;
+}
+    
+
+#border {
+background-image: linear-gradient(to bottom, var(--primary) 0, var(--indigo) 80%);
+border: 5px outset var(--primary);
+border-radius: 50px;
+
+text-align: center;
+overflow: hidden;
+padding-bottom: 10px;
+line-height: 200%;
+}
+
+#img-on-menu {
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+
+}
+
+@media screen and (max-width: 1200px){
+#floating-menu{
+width: 300px;
+}
+}
+
+
 @media screen and (max-width: 1100px){
 .blockquote {
 font-size: 0.675em;;
+}
+}
 
+@media screen and (max-width: 992px){
+#floating-menu{
+font-size: 1.5rem;
+width: 225px;
+}
 }
 
 @media screen and (max-width: 888px){
@@ -110,19 +151,23 @@ font-size: 1rem;
 width: 200px;
 margin-left: auto;
 margin-right: auto;
+position: relative;
 }
 
 .blockquote {
 display: none;
 
+}
+
 
 }
 
 
 
 
-
 /*
+
+(min-width: 30em) and (max-width: 50em)
 
 static
 relative
