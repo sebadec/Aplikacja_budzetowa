@@ -62,23 +62,60 @@
                 <div class="" id="floating-menu">
 
 
-                    <ul>
-                        <li>
-                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#logowanie" type="button" role="tab" aria-controls="home"
+                                aria-selected="true">Logowanie</button>
                         </li>
-                        <li>
-                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
-                        </li>
-                        <li>
-                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
-                        </li>
-                        <li>
-                            <a href="ustawienia.html">Ustawienia</a>
-                        </li>
-                        <li>
-                            <a href="strona_startowa.html">Wyloguj się</a>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="rejestracja-tab" data-bs-toggle="tab"
+                                data-bs-target="#rejestracja" type="button" role="tab" aria-controls="rejestracja"
+                                aria-selected="false">Rejestracja</button>
                         </li>
                     </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="logowanie" role="tabpanel"
+                            aria-labelledby="home-tab">
+
+                            <form>
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
+                                        email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="exampleInputPassword1" class="form-label" id="text-budget">Hasło</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="text-budget">Zaloguj</button>
+                            </form>
+
+
+                        </div>
+
+
+                        <div class="tab-pane fade" id="rejestracja" role="tabpanel" aria-labelledby="rejestracja-tab">
+
+                            <form>
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
+                                        email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="exampleInputPassword1" class="form-label" id="text-budget">Hasło</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="text-budget">Zarejestruj</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+
 
                 </div>
 

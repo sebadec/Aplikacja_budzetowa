@@ -37,7 +37,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="#">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -85,63 +85,32 @@
             </div>
 
             <div class="col-md-8">
-                <main id="border">
-                    <h1>Dodaj wydatek</h1>
+                <main class="" id="border">
 
-                    <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
+                    <div>
+                        <img src="./images/budzet-domowy-poradnik.jpg" class="img-fluid" id="img-on-menu"
+                            alt="Responsive image">
 
-                    <form action="strona_startowa.html">
-                        <p>
-                            <label for="kwota">Podaj kwotę: </label>
-                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
-                        </p>
 
-                        <p>
-                            <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" required>
-                        </p>
 
-                        <label for="Platnosc">Sposób płatności:</label>
-                        <select name="Platnosc" id="Platnosc">
-                            <option value="karta_kredytowa" selected>Karta kredytowa</option>
-                            <option value="gotowka">Gotówka</option>
-                            <option value="karta_debetowa">Karta debetowa</option>
-                        </select>
-                        <br>
+                    </div>
 
-                        <label for="Kategoria">Kategoria:</label>
-                        <select name="Kategoria" id="Kategoria">
-                            <option value="jedzenie" selected>Jedzenie</option>
-                            <option value="mieszkanie">Mieszkanie</option>
-                            <option value="transport">Transport</option>
-                            <option value="telekomunikacja">Telekomunikacja</option>
-                            <option value="opieka_zdrowotna">Opieka zdrowotna</option>
-                            <option value="ubranie">Ubranie</option>
-                            <option value="higiena">Higiena</option>
-                            <option value="dzieci">Dzieci</option>
-                            <option value="rozrywka">Rozrywka</option>
-                            <option value="wycieczka">Wycieczka</option>
-                            <option value="szkolenia">Szkolenia</option>
-                            <option value="ksiazki">Książki</option>
-                            <option value="oszczednosci">Oszczędności</option>
-                            <option value="emerytura">Na złotą jesień, czyli emeryturę</option>
-                            <option value="splata_dlugow">Spłata długów</option>
-                            <option value="darowizna">Darowizna</option>
-                            <option value="inne">Inne wydatki</option>
-                        </select>
 
-                        <p>
-                            <label for="komentarz">Komentarz</label>
-                            <br>
-                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
-                                placeholder="opcjonalnie"></textarea>
-                        </p>
+                    <h1>Budżet osobisty</h1>
 
-                        <button type="submit">Dodaj</button>
+                    <div id="text-budget">...to jedno z tych pojęć w finansach osobistych, wokół którego
+                        jest
+                        sporo nieporozumień. Wiele osób uważa, że chodzi tu o żmudne spisywanie wydatków, z którego
+                        niewiele wynika. Tymczasem budżet to coś zupełnie innego. Gdy robi się
+                        go dobrze – niesamowicie pomaga w zadbaniu o własne finanse. Gdy nie robi się go wcale – mnóstwo
+                        pieniędzy przecieka nam
+                        przez palce, a cele finansowe osiągamy wolniej. Gdy robi się go źle – łatwo jest się zniechęcić
+                        i popełnić finansowe
+                        błędy. Właśnie dlatego powstała ta aplikacja, aby pomóc każdemu zaplanować swoje finanse!</div>
+                    <br>
 
-                        <button onclick="window.location.href='menu_glowne.html'">Anuluj</button>
 
-                    </form>
+                    <br>
                 </main>
             </div>
         </div>

@@ -7,66 +7,131 @@
     <title>Budżet Osobisty</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
-    <nav>
-        <a href="menu_glowne.html">Sebastian Dec</a>
-        <ul>
-            <li>
-                <a href="dodaj_przychod.html">Dodaj przychód</a>
-            </li>
-            <li>
-                <a href="dodaj_wydatek.html">Dodaj wydatek</a>
-            </li>
-            <li>
-                <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
-            </li>
-            <li>
-                <a href="ustawienia.html">Ustawienia</a>
-            </li>
 
-        </ul>
-        <a href="strona_startowa.html">Wyloguj się</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow p-3 mb-5" aria-label="Menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sebastian Dec</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">O Mnie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
+                            data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
+                        <ul class=" dropdown-menu" aria-labelledby="dropdown03">
+                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
+                    <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
+                </ul>
+                </li>
+
+                </ul>
+                <blockquote class="blockquote text-right">
+                    <p class="mb-0">Większość z Was zna zalety programisty. Oczywiście są trzy: lenistwo,
+                        niecierpliwość i pycha.</p>
+                    <footer class="blockquote-footer text-right">Larry Wall<cite title="Losowy
+                            cytat"></cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
     </nav>
-    <main>
-        <h1>Dodaj przychód</h1>
 
-        <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
 
-        <form action="strona_startowa.html">
-            <p>
-                <label for="kwota">Podaj kwotę: </label>
-                <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
-            </p>
+                <div class="" id="floating-menu">
 
-            <p>
-                <label for="data">Wybierz datę: </label>
-                <input type="date" id="data" value="2021-12-27" required>
-            </p>
 
-            <label for="Kategoria">Kategoria:</label>
-            <select name="Kategoria" id="Kategoria">
-                <option value="wynagrodzenie" selected>Wynagrodzenie</option>
-                <option value="odsetki_bankowe">Odsetki bankowe</option>
-                <option value="sprzedaz_na_allegro">Sprzedaż na allegro</option>
-                <option value="inne">Inne</option>
-            </select>
+                    <ul>
+                        <li>
+                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                        </li>
+                        <li>
+                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                        </li>
+                        <li>
+                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                        </li>
+                        <li>
+                            <a href="ustawienia.html">Ustawienia</a>
+                        </li>
+                        <li>
+                            <a href="ab_menu_glowne.html">Wyloguj się</a>
+                        </li>
+                    </ul>
 
-            <p>
-                <label for="komentarz">Komentarz</label>
-                <br>
-                <textarea id="komentarz" rows="5" cols="50" name="komentarz" placeholder="opcjonalnie"></textarea>
-            </p>
+                </div>
 
-            <button type="submit">Dodaj</button>
+            </div>
 
-            <button onclick="window.location.href='menu_glowne.html'">Anuluj</button>
+            <div class="col-md-8">
+                <main id="border">
+                    <h1>Dodaj przychód</h1>
 
-        </form>
-    </main>
+                    <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
 
+                    <form action="strona_startowa.html">
+                        <p>
+                            <label for="kwota">Podaj kwotę: </label>
+                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
+                        </p>
+
+                        <p>
+                            <label for="data">Wybierz datę: </label>
+                            <input type="date" id="data" value="2021-12-27" required>
+                        </p>
+
+                        <label for="Kategoria">Kategoria:</label>
+                        <select name="Kategoria" id="Kategoria">
+                            <option value="wynagrodzenie" selected>Wynagrodzenie</option>
+                            <option value="odsetki_bankowe">Odsetki bankowe</option>
+                            <option value="sprzedaz_na_allegro">Sprzedaż na allegro</option>
+                            <option value="inne">Inne</option>
+                        </select>
+
+                        <p>
+                            <label for="komentarz">Komentarz</label>
+                            <br>
+                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
+                                placeholder="opcjonalnie"></textarea>
+                        </p>
+
+                        <button type="submit">Dodaj</button>
+
+                        <button onclick="window.location.href='ab_menu_glowne_uzytkownik.html'">Anuluj</button>
+
+                    </form>
+                </main>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+    <script src="js/bootstrap.js"></script>
 
 </body>
 
