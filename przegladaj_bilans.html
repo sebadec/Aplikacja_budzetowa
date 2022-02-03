@@ -7,137 +7,157 @@
     <title>Budżet Osobisty</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
-    <nav>
-        <a href="menu_glowne.html">Sebastian Dec</a>
-        <ul>
-            <li>
-                <a href="dodaj_przychod.html">Dodaj przychód</a>
-            </li>
-            <li>
-                <a href="dodaj_wydatek.html">Dodaj wydatek</a>
-            </li>
-            <li>
-                <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
-            </li>
-            <li>
-                <a href="ustawienia.html">Ustawienia</a>
-            </li>
 
-        </ul>
-        <a href="strona_startowa.html">Wyloguj się</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow p-3 mb-5" aria-label="Menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sebastian Dec</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">O Mnie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
+                            data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
+                        <ul class=" dropdown-menu" aria-labelledby="dropdown03">
+                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
+                    <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
+                </ul>
+                </li>
+
+                </ul>
+                <blockquote class="blockquote text-right">
+                    <p class="mb-0">Większość z Was zna zalety programisty. Oczywiście są trzy: lenistwo,
+                        niecierpliwość i pycha.</p>
+                    <footer class="blockquote-footer text-right">Larry Wall<cite title="Losowy
+                            cytat"></cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
     </nav>
-    <main>
-        <h1>Bilans</h1>
 
-        <a>Przejżyj bilans swoich zysków i strat.</a>
-        <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
 
-        <form action="strona_startowa.html">
+                <div class="" id="floating-menu">
 
-            <p>
-                <label for="Kategoria">Kategoria:</label>
-                <select name="Kategoria" id="Kategoria">
-                    <option value="bieżący miesiąc" selected>Bieżący miesiąc</option>
-                    <option value="poprzedni miesiąc">Poprzedni miesiąc</option>
-                    <option value="bieżący rok">Bieżący rok</option>
-                    <option value="niestandardowy">Niestandardowy</option>
-                </select>
-            </p>
 
-            <p>
-                <button type="submit">Generuj raport</button>
-                <button onclick="window.location.href='menu_glowne.html'">Anuluj</button>
-            </p>
+                    <ul>
+                        <li>
+                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                        </li>
+                        <li>
+                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                        </li>
+                        <li>
+                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                        </li>
+                        <li>
+                            <a href="ustawienia.html">Ustawienia</a>
+                        </li>
+                        <li>
+                            <a href="ab_menu_glowne.html">Wyloguj się</a>
+                        </li>
+                    </ul>
 
-            <a>To niżej ma się pokazać (przykład).</a>
-
-        </form>
-
-        <div class="conteiner">
-            <div class="floatLeft">
-                <h1>Tabela</h1>
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-0pky">Bilans</th>
-                            <th class="tg-0lax"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0lax">Przychody</td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Wynagrodzenie</td>
-                            <td class="tg-0lax">4000</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Odsetki bankowe</td>
-                            <td class="tg-0lax">5</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Sprzedaż na allegro</td>
-                            <td class="tg-0lax">95</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Inne</td>
-                            <td class="tg-0lax">100</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">SUMA</td>
-                            <td class="tg-0lax">4200</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Wydatki</td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Jedzenie</td>
-                            <td class="tg-0lax">600</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Mieszkanie</td>
-                            <td class="tg-0lax">1000</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Transport</td>
-                            <td class="tg-0lax">400</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">Telekomunikacja</td>
-                            <td class="tg-0lax">0</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">SUMA</td>
-                            <td class="tg-0lax">2000</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">BILANS</td>
-                            <td class="tg-0lax">2200</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax" colspan="2">Gratulacje, jesteś na plusie! :)</td>
-                        </tr>
-                    </tbody>
-                </table>
+                </div>
 
             </div>
 
-            <div class="floatRight">
-                <h1>Wykresy</h1>
+            <div class="col-md-8">
 
-                <img src="image\v7GQS.png" alt="wykres">
+                <main id="border">
 
+                    <h1>Bilans</h1>
+
+                    <a>Przejżyj bilans swoich zysków i strat.</a>
+                    <br>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Zakres
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
+                                        1000 zł</label>
+                                    <input type="range" class="form-range" min="0" max="1000" step="1"
+                                        id="customRange1">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary">Akceptuj</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <form action="strona_startowa.html">
+
+                        <p>
+                            <label for="Kategoria">Kategoria:</label>
+                            <select name="Kategoria" id="Kategoria">
+                                <option value="bieżący miesiąc" selected>Bieżący miesiąc</option>
+                                <option value="poprzedni miesiąc">Poprzedni miesiąc</option>
+                                <option value="bieżący rok">Bieżący rok</option>
+                                <option value="niestandardowy">Niestandardowy</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <button type="submit" id="button_menu">Generuj raport</button>
+                            <button onclick="window.location.href='ab_menu_glowne_uzytkownik.html'"
+                                id="button_menu">Anuluj</button>
+                        </p>
+
+                    </form>
+
+
+
+                </main>
             </div>
-
         </div>
 
-    </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+    <script src="js/bootstrap.js"></script>
 
 </body>
 
