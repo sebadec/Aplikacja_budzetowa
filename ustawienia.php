@@ -37,7 +37,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="ab_menu_glowne.php">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -64,19 +64,19 @@
 
                     <ul>
                         <li>
-                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                            <a href="dodaj_przychod.php">Dodaj przychód</a>
                         </li>
                         <li>
-                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                            <a href="dodaj_wydatek.php">Dodaj wydatek</a>
                         </li>
                         <li>
-                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                            <a href="przegladaj_bilans.php">Przeglądaj bilans</a>
                         </li>
                         <li>
-                            <a href="ustawienia.html">Ustawienia</a>
+                            <a href="ustawienia.php">Ustawienia</a>
                         </li>
                         <li>
-                            <a href="ab_menu_glowne.html">Wyloguj się</a>
+                            <a href="ab_menu_glowne.php">Wyloguj się</a>
                         </li>
                     </ul>
 
@@ -86,42 +86,15 @@
 
             <div class="col-md-8">
                 <main id="border">
-                    <h1>Dodaj przychód</h1>
 
-                    <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
+                    <h1>Ustawienia</h1>
 
-                    <form action="strona_startowa.html">
-                        <p>
-                            <label for="kwota">Podaj kwotę: </label>
-                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
-                        </p>
+                    <a>Tutaj będzie można zmienić ustawienia, np. usuwać, edytować oraz dodawać kategorie przychodów,
+                        wydatków oraz
+                        rodzai metod płatności.</a>
+                    <br>
+                    <a>Aktualnie jeszcze nie wiem jakbym chciał aby ta strona wyglądała.</a>
 
-                        <p>
-                            <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" value="2021-12-27" required>
-                        </p>
-
-                        <label for="Kategoria">Kategoria:</label>
-                        <select name="Kategoria" id="Kategoria">
-                            <option value="wynagrodzenie" selected>Wynagrodzenie</option>
-                            <option value="odsetki_bankowe">Odsetki bankowe</option>
-                            <option value="sprzedaz_na_allegro">Sprzedaż na allegro</option>
-                            <option value="inne">Inne</option>
-                        </select>
-
-                        <p>
-                            <label for="komentarz">Komentarz</label>
-                            <br>
-                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
-                                placeholder="opcjonalnie"></textarea>
-                        </p>
-
-                        <button type="submit" id="button_menu">Dodaj</button>
-
-                        <button onclick="window.location.href='ab_menu_glowne_uzytkownik.html'"
-                            id="button_menu">Anuluj</button>
-
-                    </form>
                 </main>
             </div>
         </div>

@@ -1,3 +1,50 @@
+<?php
+session_start();
+
+require_once 'database.php';
+
+if (!isset($_SESSION['logged_id'])) {
+
+	if (isset($_POST['email'])) {
+		
+		$email = filter_input(INPUT_POST, 'email');
+		$password = filter_input(INPUT_POST, 'password');
+		
+		//echo $email . " " .$password;
+		
+		$userQuery = $db->prepare('SELECT id, password FROM users WHERE email = :email');
+		$userQuery->bindValue(':email', $email, PDO::PARAM_STR);
+		$userQuery->execute();
+		
+		//echo $userQuery->rowCount();
+		
+		$user = $userQuery->fetch();
+		
+		//echo $user['id'] . " " . $user['password'];
+		
+		if ($user && $password) {
+			$_SESSION['logged_id'] = $user['id'];
+			unset($_SESSION['bad_attempt']);
+		} else {
+			$_SESSION['bad_attempt'] = true;
+			header('Location: ab_menu_glowne.php');
+			exit();
+		}
+			
+	} else {
+		
+		header('Location: ab_menu_glowne.php');
+		exit();
+	}
+}
+
+$usersQuery = $db->query('SELECT * FROM users');
+$users = $usersQuery->fetchAll();
+
+//print_r($users);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -37,7 +84,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="#">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -64,19 +111,19 @@
 
                     <ul>
                         <li>
-                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                            <a href="dodaj_przychod.php">Dodaj przychód</a>
                         </li>
                         <li>
-                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                            <a href="dodaj_wydatek.php">Dodaj wydatek</a>
                         </li>
                         <li>
-                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                            <a href="przegladaj_bilans.php">Przeglądaj bilans</a>
                         </li>
                         <li>
-                            <a href="ustawienia.html">Ustawienia</a>
+                            <a href="ustawienia.php">Ustawienia</a>
                         </li>
                         <li>
-                            <a href="ab_menu_glowne.html">Wyloguj się</a>
+                            <a href="logout.php">Wyloguj się</a>
                         </li>
                     </ul>
 
@@ -85,68 +132,32 @@
             </div>
 
             <div class="col-md-8">
+                <main class="" id="border">
 
-                <main id="border">
+                    <div>
+                        <img src="./images/budzet-domowy-poradnik.jpg" class="img-fluid" id="img-on-menu"
+                            alt="Responsive image">
 
-                    <h1>Bilans</h1>
 
-                    <a>Przejżyj bilans swoich zysków i strat.</a>
-                    <br>
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Zakres
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
-                                        1000 zł</label>
-                                    <input type="range" class="form-range" min="0" max="1000" step="1"
-                                        id="customRange1">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Zamknij</button>
-                                    <button type="button" class="btn btn-primary">Akceptuj</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
+
+                    <h1>Budżet osobisty</h1>
+
+                    <div id="text-budget">...to jedno z tych pojęć w finansach osobistych, wokół którego
+                        jest
+                        sporo nieporozumień. Wiele osób uważa, że chodzi tu o żmudne spisywanie wydatków, z którego
+                        niewiele wynika. Tymczasem budżet to coś zupełnie innego. Gdy robi się
+                        go dobrze – niesamowicie pomaga w zadbaniu o własne finanse. Gdy nie robi się go wcale – mnóstwo
+                        pieniędzy przecieka nam
+                        przez palce, a cele finansowe osiągamy wolniej. Gdy robi się go źle – łatwo jest się zniechęcić
+                        i popełnić finansowe
+                        błędy. Właśnie dlatego powstała ta aplikacja, aby pomóc każdemu zaplanować swoje finanse!</div>
                     <br>
 
-                    <form action="strona_startowa.html">
 
-                        <p>
-                            <label for="Kategoria">Kategoria:</label>
-                            <select name="Kategoria" id="Kategoria">
-                                <option value="bieżący miesiąc" selected>Bieżący miesiąc</option>
-                                <option value="poprzedni miesiąc">Poprzedni miesiąc</option>
-                                <option value="bieżący rok">Bieżący rok</option>
-                                <option value="niestandardowy">Niestandardowy</option>
-                            </select>
-                        </p>
-
-                        <p>
-                            <button type="submit" id="button_menu">Generuj raport</button>
-                            <button onclick="window.location.href='ab_menu_glowne_uzytkownik.html'"
-                                id="button_menu">Anuluj</button>
-                        </p>
-
-                    </form>
-
-
-
+                    <br>
                 </main>
             </div>
         </div>

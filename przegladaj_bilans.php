@@ -37,7 +37,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.html">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="ab_menu_glowne.php">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -64,19 +64,19 @@
 
                     <ul>
                         <li>
-                            <a href="dodaj_przychod.html">Dodaj przychód</a>
+                            <a href="dodaj_przychod.php">Dodaj przychód</a>
                         </li>
                         <li>
-                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
+                            <a href="dodaj_wydatek.php">Dodaj wydatek</a>
                         </li>
                         <li>
-                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
+                            <a href="przegladaj_bilans.php">Przeglądaj bilans</a>
                         </li>
                         <li>
-                            <a href="ustawienia.html">Ustawienia</a>
+                            <a href="ustawienia.php">Ustawienia</a>
                         </li>
                         <li>
-                            <a href="ab_menu_glowne.html">Wyloguj się</a>
+                            <a href="ab_menu_glowne.php">Wyloguj się</a>
                         </li>
                     </ul>
 
@@ -85,63 +85,68 @@
             </div>
 
             <div class="col-md-8">
+
                 <main id="border">
-                    <h1>Dodaj wydatek</h1>
 
-                    <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
+                    <h1>Bilans</h1>
 
-                    <form action="strona_startowa.html">
+                    <a>Przejżyj bilans swoich zysków i strat.</a>
+                    <br>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Zakres
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
+                                        1000 zł</label>
+                                    <input type="range" class="form-range" min="0" max="1000" step="1"
+                                        id="customRange1">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary">Akceptuj</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <form action="strona_startowa.php">
+
                         <p>
-                            <label for="kwota">Podaj kwotę: </label>
-                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
+                            <label for="Kategoria">Kategoria:</label>
+                            <select name="Kategoria" id="Kategoria">
+                                <option value="bieżący miesiąc" selected>Bieżący miesiąc</option>
+                                <option value="poprzedni miesiąc">Poprzedni miesiąc</option>
+                                <option value="bieżący rok">Bieżący rok</option>
+                                <option value="niestandardowy">Niestandardowy</option>
+                            </select>
                         </p>
 
                         <p>
-                            <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" required>
+                            <button type="submit" id="button_menu">Generuj raport</button>
+                            <button onclick="window.location.href='ab_menu_glowne_uzytkownik.php'"
+                                id="button_menu">Anuluj</button>
                         </p>
-
-                        <label for="Platnosc">Sposób płatności:</label>
-                        <select name="Platnosc" id="Platnosc">
-                            <option value="karta_kredytowa" selected>Karta kredytowa</option>
-                            <option value="gotowka">Gotówka</option>
-                            <option value="karta_debetowa">Karta debetowa</option>
-                        </select>
-                        <br>
-
-                        <label for="Kategoria">Kategoria:</label>
-                        <select name="Kategoria" id="Kategoria">
-                            <option value="jedzenie" selected>Jedzenie</option>
-                            <option value="mieszkanie">Mieszkanie</option>
-                            <option value="transport">Transport</option>
-                            <option value="telekomunikacja">Telekomunikacja</option>
-                            <option value="opieka_zdrowotna">Opieka zdrowotna</option>
-                            <option value="ubranie">Ubranie</option>
-                            <option value="higiena">Higiena</option>
-                            <option value="dzieci">Dzieci</option>
-                            <option value="rozrywka">Rozrywka</option>
-                            <option value="wycieczka">Wycieczka</option>
-                            <option value="szkolenia">Szkolenia</option>
-                            <option value="ksiazki">Książki</option>
-                            <option value="oszczednosci">Oszczędności</option>
-                            <option value="emerytura">Na złotą jesień, czyli emeryturę</option>
-                            <option value="splata_dlugow">Spłata długów</option>
-                            <option value="darowizna">Darowizna</option>
-                            <option value="inne">Inne wydatki</option>
-                        </select>
-
-                        <p>
-                            <label for="komentarz">Komentarz</label>
-                            <br>
-                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
-                                placeholder="opcjonalnie"></textarea>
-                        </p>
-
-                        <button type="submit" id="button_menu">Dodaj</button>
-
-                        <button onclick="window.location.href='menu_glowne.html'" id="button_menu">Anuluj</button>
 
                     </form>
+
+
+
                 </main>
             </div>
         </div>

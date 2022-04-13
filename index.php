@@ -37,7 +37,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="#">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="ab_menu_glowne.php">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -55,67 +55,8 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-
-                <div class="" id="floating-menu">
 
 
-                    <ul>
-                        <li>
-                            <a href="dodaj_przychod.html">Dodaj przychód</a>
-                        </li>
-                        <li>
-                            <a href="dodaj_wydatek.html">Dodaj wydatek</a>
-                        </li>
-                        <li>
-                            <a href="przegladaj_bilans.html">Przeglądaj bilans</a>
-                        </li>
-                        <li>
-                            <a href="ustawienia.html">Ustawienia</a>
-                        </li>
-                        <li>
-                            <a href="ab_menu_glowne.html">Wyloguj się</a>
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-8">
-                <main class="" id="border">
-
-                    <div>
-                        <img src="./images/budzet-domowy-poradnik.jpg" class="img-fluid" id="img-on-menu"
-                            alt="Responsive image">
-
-
-
-                    </div>
-
-
-                    <h1>Budżet osobisty</h1>
-
-                    <div id="text-budget">...to jedno z tych pojęć w finansach osobistych, wokół którego
-                        jest
-                        sporo nieporozumień. Wiele osób uważa, że chodzi tu o żmudne spisywanie wydatków, z którego
-                        niewiele wynika. Tymczasem budżet to coś zupełnie innego. Gdy robi się
-                        go dobrze – niesamowicie pomaga w zadbaniu o własne finanse. Gdy nie robi się go wcale – mnóstwo
-                        pieniędzy przecieka nam
-                        przez palce, a cele finansowe osiągamy wolniej. Gdy robi się go źle – łatwo jest się zniechęcić
-                        i popełnić finansowe
-                        błędy. Właśnie dlatego powstała ta aplikacja, aby pomóc każdemu zaplanować swoje finanse!</div>
-                    <br>
-
-
-                    <br>
-                </main>
-            </div>
-        </div>
-
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

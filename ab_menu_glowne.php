@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged_id'])) {
+	header('Location: ab_menu_glowne_uzytkownik.php');
+	exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -75,21 +84,33 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+
                         <div class="tab-pane fade show active" id="logowanie" role="tabpanel"
                             aria-labelledby="home-tab">
 
-                            <form>
+                            <form method="post" action="ab_menu_glowne_uzytkownik.php">
                                 <div class="mb-4">
                                     <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
                                         email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    name="email"
+                                    >
                                 </div>
                                 <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label" id="text-budget">Hasło</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                    name="password"
+                                    >
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="text-budget">Zaloguj</button>
+
+                                <?php
+					            if (isset($_SESSION['bad_attempt'])) {
+					        	echo '<p>Niepoprawny login lub hasło!</p>';
+					        	unset($_SESSION['bad_attempt']);
+					            }
+					            ?>
+
                             </form>
 
 
