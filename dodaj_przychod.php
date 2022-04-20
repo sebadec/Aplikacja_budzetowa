@@ -1,3 +1,43 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['logged_id']))
+	{
+		header('Location: ab_menu_glowne.php');
+		exit();
+	}
+	
+	if(isset($_POST['amount']))
+	{
+		$good=true;
+		$amount = $_POST['amount'];
+		$date = $_POST['date_of_income'];
+		$category = $_POST['income_category_assigned_to_user_id'];
+		$comment = $_POST['income_comment'];
+		
+		if ($amount <=0)
+		{
+			$good=false;
+			$_SESSION['e_amount']="Wpisz pozytywną wartość";
+		}
+		$comment = htmlentities($comment, ENT_QUOTES, "UTF-8");
+		
+		require_once 'database.php';
+		
+		if($good == true)
+		{
+			$query = $db->prepare('INSERT INTO incomes VALUES (NULL, :userId, :income_category_assigned_to_user_id, :amount, :date_of_income, :income_comment)');
+			$query->bindValue(':userId', $_SESSION['logged_id'], PDO::PARAM_INT);
+            $query->bindValue(':income_category_assigned_to_user_id', $category, PDO::PARAM_STR);
+			$query->bindValue(':amount', $amount, PDO::PARAM_STR);
+			$query->bindValue(':date_of_income', $date, PDO::PARAM_STR);
+			$query->bindValue(':income_comment', $comment, PDO::PARAM_STR);
+			$query->execute();
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -90,29 +130,51 @@
 
                     <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
 
-                    <form action="strona_startowa.php">
+                    <form method="post">
                         <p>
                             <label for="kwota">Podaj kwotę: </label>
-                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
+                            <input type="number" placeholder="kwota" id="kwota" name="amount" required>
                         </p>
+
+                        <?php
+							if (isset($_SESSION['e_amount']))
+							{
+								echo '<div class="error">'.$_SESSION['e_amount'].'</div>';
+								unset($_SESSION['e_amount']);
+							}
+					    ?>
 
                         <p>
                             <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" value="2021-12-27" required>
+                            <input type="date" id="data" value="2000-01-01" name="date_of_income" required>
                         </p>
 
                         <label for="Kategoria">Kategoria:</label>
-                        <select name="Kategoria" id="Kategoria">
-                            <option value="wynagrodzenie" selected>Wynagrodzenie</option>
-                            <option value="odsetki_bankowe">Odsetki bankowe</option>
-                            <option value="sprzedaz_na_allegro">Sprzedaż na allegro</option>
-                            <option value="inne">Inne</option>
+                        <select name="income_category_assigned_to_user_id" id="Kategoria">
+                        <?php
+							if (isset($_SESSION['e_amount']))
+							{
+								echo '<div class="error">'.$_SESSION['e_amount'].'</div>';
+								unset($_SESSION['e_amount']);
+							}
+                            
+
+                            //<option value="2" selected>Wynagrodzenie</option>
+                            //<option value="3">Odsetki bankowe</option>
+                            //<option value="4">Sprzedaż na allegro</option>
+                            //<option value="5">Inne</option>
+					    ?>
+
+                        <option value="<?php ?>" selected><?php echo'dsds' ?></option>
+
+
+                            
                         </select>
 
                         <p>
                             <label for="komentarz">Komentarz</label>
                             <br>
-                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
+                            <textarea id="komentarz" rows="5" cols="50" name="income_comment"
                                 placeholder="opcjonalnie"></textarea>
                         </p>
 

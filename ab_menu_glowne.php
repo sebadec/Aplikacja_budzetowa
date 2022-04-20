@@ -119,7 +119,13 @@ if (isset($_SESSION['logged_id'])) {
 
                         <div class="tab-pane fade" id="rejestracja" role="tabpanel" aria-labelledby="rejestracja-tab">
 
-                            <form>
+                            <form method="post" action="ab_menu_glowne_uzytkownik.php">
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
+                                        email</label>
+                                    <input type="text" class="form-control" id="exampleInputtext1"
+                                        aria-describedby="textHelp">
+                                </div>
                                 <div class="mb-4">
                                     <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
                                         email</label>
