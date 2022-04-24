@@ -10,7 +10,7 @@ if (!isset($_SESSION['logged_id'])) {
 		$email = filter_input(INPUT_POST, 'email');
 		$password = filter_input(INPUT_POST, 'password');
 		
-		//echo $email . " " .$password;
+		// echo $email . " " .$password;
 		
 		$userQuery = $db->prepare('SELECT id, password FROM users WHERE email = :email');
 		$userQuery->bindValue(':email', $email, PDO::PARAM_STR);
@@ -22,7 +22,7 @@ if (!isset($_SESSION['logged_id'])) {
 		
 		//echo $user['id'] . " " . $user['password'];
 		
-		if ($user && $password) {
+		if ($user && ($password == $user['password']) ) {
 			$_SESSION['logged_id'] = $user['id'];
 			unset($_SESSION['bad_attempt']);
 		} else {
@@ -37,6 +37,11 @@ if (!isset($_SESSION['logged_id'])) {
 		exit();
 	}
 }
+
+/*
+
+
+*/
 
 $usersQuery = $db->query('SELECT * FROM users');
 $users = $usersQuery->fetchAll();
