@@ -153,59 +153,24 @@
                         <select name="income_category_assigned_to_user_id" id="Kategoria">
                         <?php
 
+                            require_once 'database.php';
                             
                             $userId = $_SESSION['logged_id'];
 
-                            //$dane = $db->query("SELECT name FROM incomes_category_assigned_to_users WHERE user_id = '$userId'");
-                            //$wiersze = $dane->fetch(PDO::FETCH_ASSOC);
-                            //$userId = $wiersz['id'];
+                            $stmt = $db->query("SELECT name, id FROM incomes_category_assigned_to_users WHERE user_id = '$userId'");
 
-                            
-
-
-
-                            /*
-                            echo "<td style width='30%'><select type='text' data-live-search='true' required data-live-search-style='startsWith' class='selectpicker form-control' name='co_cs_id' 
-                            value='$contacts->co_cs_id'>";
-                            //$userId = $_SESSION['id'];
-                            $userId = $_SESSION['logged_id'];
-							$query = "SELECT name, id
-                            FROM incomes_category_assigned_to_users           
-                            WHERE user_id = '$userId'
-                            ORDER BY name";
-
-                            $stmt = $db->prepare($query);
-                            $stmt->execute();
-
-                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                                extract($row);
-                                if(1 == 1) {
-                                    echo "<option value='{id}' selected>{name}</option>";
-                                } else {
-                                    echo "<option value='{id}'>{name}</option>";
-                                } 
+                            while ($row = $stmt->fetch()) {
+                                echo $row['name']."<br />\n";
+                                echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
                             }
 
+                            foreach ($users as $user) {
+                            echo "<tr><td>{$user['id']}</td><td>{$user['email']}</td></tr>";
+							echo `<option value="" selected><?php echo $userId </option>`;
+						    }
 
-                            //<option value="2" selected>Wynagrodzenie</option>
-                            //<option value="3">Odsetki bankowe</option>
-                            //<option value="4">Sprzedaż na allegro</option>
-                            //<option value="5">Inne</option>
-
-                            */
 					    ?>
 
-                        <option value="<?php ?>" selected><?php echo'dsds' ?></option>
-                        <option value="<?php ?>" selected><?php echo $userId ?></option>
-
-                        <?php
-						foreach ($users as $user) {
-							echo `<option value="" selected><?php echo $userId </option>`;
-						}
-						?>
-
-
-                            
                         </select>
 
                         <p>
