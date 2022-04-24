@@ -19,7 +19,7 @@
 		if ($amount <=0)
 		{
 			$good=false;
-			$_SESSION['e_amount']="Wpisz pozytywną wartość";
+			$_SESSION['bad_amount']="Wpisz pozytywną wartość";
 		}
 		$comment = htmlentities($comment, ENT_QUOTES, "UTF-8");
 		
@@ -137,35 +137,72 @@
                         </p>
 
                         <?php
-							if (isset($_SESSION['e_amount']))
+							if (isset($_SESSION['bad_amount']))
 							{
-								echo '<div class="error">'.$_SESSION['e_amount'].'</div>';
-								unset($_SESSION['e_amount']);
+								echo '<div class="error">'.$_SESSION['bad_amount'].'</div>';
+								unset($_SESSION['bad_amount']);
 							}
 					    ?>
 
                         <p>
                             <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" value="2000-01-01" name="date_of_income" required>
+                            <input type="date" id="data" value="<?php echo date('Y-m-d');?>" name="date_of_income" required>
                         </p>
 
                         <label for="Kategoria">Kategoria:</label>
                         <select name="income_category_assigned_to_user_id" id="Kategoria">
                         <?php
-							if (isset($_SESSION['e_amount']))
-							{
-								echo '<div class="error">'.$_SESSION['e_amount'].'</div>';
-								unset($_SESSION['e_amount']);
-							}
+
                             
+                            $userId = $_SESSION['logged_id'];
+
+                            //$dane = $db->query("SELECT name FROM incomes_category_assigned_to_users WHERE user_id = '$userId'");
+                            //$wiersze = $dane->fetch(PDO::FETCH_ASSOC);
+                            //$userId = $wiersz['id'];
+
+                            
+
+
+
+                            /*
+                            echo "<td style width='30%'><select type='text' data-live-search='true' required data-live-search-style='startsWith' class='selectpicker form-control' name='co_cs_id' 
+                            value='$contacts->co_cs_id'>";
+                            //$userId = $_SESSION['id'];
+                            $userId = $_SESSION['logged_id'];
+							$query = "SELECT name, id
+                            FROM incomes_category_assigned_to_users           
+                            WHERE user_id = '$userId'
+                            ORDER BY name";
+
+                            $stmt = $db->prepare($query);
+                            $stmt->execute();
+
+                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                extract($row);
+                                if(1 == 1) {
+                                    echo "<option value='{id}' selected>{name}</option>";
+                                } else {
+                                    echo "<option value='{id}'>{name}</option>";
+                                } 
+                            }
+
 
                             //<option value="2" selected>Wynagrodzenie</option>
                             //<option value="3">Odsetki bankowe</option>
                             //<option value="4">Sprzedaż na allegro</option>
                             //<option value="5">Inne</option>
+
+                            */
 					    ?>
 
                         <option value="<?php ?>" selected><?php echo'dsds' ?></option>
+                        <option value="<?php ?>" selected><?php echo $userId ?></option>
+
+                        <?php
+						foreach ($users as $user) {
+							echo `<option value="" selected><?php echo $userId </option>`;
+						}
+						?>
 
 
                             
