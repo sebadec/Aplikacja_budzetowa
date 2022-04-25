@@ -10,7 +10,7 @@
 	
 	if(isset($_POST['amount']))
 	{
-		$good=true;
+		$correct_data=true;
 		$amount = $_POST['amount'];
 		$date = $_POST['date_of_income'];
 		$category = $_POST['income_category_assigned_to_user_id'];
@@ -18,14 +18,14 @@
 		
 		if ($amount <=0)
 		{
-			$good=false;
+			$correct_data=false;
 			$_SESSION['bad_amount']="Wpisz pozytywną wartość";
 		}
 		$comment = htmlentities($comment, ENT_QUOTES, "UTF-8");
 		
 		require_once 'database.php';
 		
-		if($good == true)
+		if($correct_data == true)
 		{
 			$query = $db->prepare('INSERT INTO incomes VALUES (NULL, :userId, :income_category_assigned_to_user_id, :amount, :date_of_income, :income_comment)');
 			$query->bindValue(':userId', $_SESSION['logged_id'], PDO::PARAM_INT);
@@ -139,7 +139,7 @@
                         <?php
 							if (isset($_SESSION['bad_amount']))
 							{
-								echo '<div class="error">'.$_SESSION['bad_amount'].'</div>';
+								echo '<div class ="text-center mb-4 form-control">'.$_SESSION['bad_amount'].'</div>';
 								unset($_SESSION['bad_amount']);
 							}
 					    ?>
@@ -163,11 +163,6 @@
                                 echo $row['name']."<br />\n";
                                 echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
                             }
-
-                            foreach ($users as $user) {
-                            echo "<tr><td>{$user['id']}</td><td>{$user['email']}</td></tr>";
-							echo `<option value="" selected><?php echo $userId </option>`;
-						    }
 
 					    ?>
 

@@ -1,3 +1,45 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['logged_id']))
+	{
+		header('Location: ab_menu_glowne.php');
+		exit();
+	}
+	
+	if(isset($_POST['amount']))
+	{
+		$correct_data=true;
+		$amount = $_POST['amount'];
+		$date = $_POST['date_of_expense'];
+		$category = $_POST['expense_category_assigned_to_user_id'];
+        $method = $_POST['payment_method_assigned_to_user_id'];
+		$comment = $_POST['income_comment'];
+		
+		if ($amount <=0)
+		{
+			$correct_data=false;
+			$_SESSION['bad_amount']="Wpisz pozytywną wartość";
+		}
+		$comment = htmlentities($comment, ENT_QUOTES, "UTF-8");
+		
+		require_once 'database.php';
+		
+		if($correct_data == true)
+		{
+			$query = $db->prepare('INSERT INTO expenses VALUES (NULL, :userId, :expense_category_assigned_to_user_id, :payment_method_assigned_to_user_id, :amount, :date_of_expense, :expense_comment)');
+			$query->bindValue(':userId', $_SESSION['logged_id'], PDO::PARAM_INT);
+            $query->bindValue(':expense_category_assigned_to_user_id', $category, PDO::PARAM_STR);
+            $query->bindValue(':payment_method_assigned_to_user_id', $method, PDO::PARAM_STR);
+			$query->bindValue(':amount', $amount, PDO::PARAM_STR);
+			$query->bindValue(':date_of_expense', $date, PDO::PARAM_STR);
+			$query->bindValue(':expense_comment', $comment, PDO::PARAM_STR);
+			$query->execute();
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -90,50 +132,68 @@
 
                     <a>Podaj kwotę, datę, wybierz kategorię i opcjonalnie możesz dodać komentarz.</a>
 
-                    <form action="strona_startowa.php">
+                    <form method="post">
                         <p>
                             <label for="kwota">Podaj kwotę: </label>
-                            <input type="number" placeholder="kwota" id="kwota" name="kwota" required>
+                            <input type="number" placeholder="kwota" id="kwota" name="amount" required>
                         </p>
+
+                        <?php
+							if (isset($_SESSION['bad_amount']))
+							{
+								echo '<div class ="text-center mb-4 form-control">'.$_SESSION['bad_amount'].'</div>';
+								unset($_SESSION['bad_amount']);
+							}
+					    ?>
 
                         <p>
                             <label for="data">Wybierz datę: </label>
-                            <input type="date" id="data" required>
+                            <input type="date" id="data" value="<?php echo date('Y-m-d');?>" name="date_of_expense" required>
                         </p>
 
                         <label for="Platnosc">Sposób płatności:</label>
-                        <select name="Platnosc" id="Platnosc">
-                            <option value="karta_kredytowa" selected>Karta kredytowa</option>
-                            <option value="gotowka">Gotówka</option>
-                            <option value="karta_debetowa">Karta debetowa</option>
+                        <select name="payment_method_assigned_to_user_id" id="Platnosc">
+                        <?php
+
+                        require_once 'database.php';
+                        
+                        $userId = $_SESSION['logged_id'];
+
+                        $stmt = $db->query("SELECT name, id FROM payment_methods_assigned_to_users WHERE user_id = '$userId'");
+
+                        while ($row = $stmt->fetch()) {
+                            echo $row['name']."<br />\n";
+                            echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
+                        }
+
+                        ?>
                         </select>
+
+
                         <br>
 
                         <label for="Kategoria">Kategoria:</label>
-                        <select name="Kategoria" id="Kategoria">
-                            <option value="jedzenie" selected>Jedzenie</option>
-                            <option value="mieszkanie">Mieszkanie</option>
-                            <option value="transport">Transport</option>
-                            <option value="telekomunikacja">Telekomunikacja</option>
-                            <option value="opieka_zdrowotna">Opieka zdrowotna</option>
-                            <option value="ubranie">Ubranie</option>
-                            <option value="higiena">Higiena</option>
-                            <option value="dzieci">Dzieci</option>
-                            <option value="rozrywka">Rozrywka</option>
-                            <option value="wycieczka">Wycieczka</option>
-                            <option value="szkolenia">Szkolenia</option>
-                            <option value="ksiazki">Książki</option>
-                            <option value="oszczednosci">Oszczędności</option>
-                            <option value="emerytura">Na złotą jesień, czyli emeryturę</option>
-                            <option value="splata_dlugow">Spłata długów</option>
-                            <option value="darowizna">Darowizna</option>
-                            <option value="inne">Inne wydatki</option>
+                        <select name="expense_category_assigned_to_user_id" id="Kategoria">
+                        <?php
+
+                        require_once 'database.php';
+                        
+                        $userId = $_SESSION['logged_id'];
+
+                        $stmt = $db->query("SELECT name, id FROM expenses_category_assigned_to_users WHERE user_id = '$userId'");
+
+                        while ($row = $stmt->fetch()) {
+                            echo $row['name']."<br />\n";
+                            echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
+                        }
+
+                        ?>
                         </select>
 
                         <p>
                             <label for="komentarz">Komentarz</label>
                             <br>
-                            <textarea id="komentarz" rows="5" cols="50" name="komentarz"
+                            <textarea id="komentarz" rows="5" cols="50" name="income_comment"
                                 placeholder="opcjonalnie"></textarea>
                         </p>
 
