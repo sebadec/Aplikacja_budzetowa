@@ -93,39 +93,59 @@
                     <a>Przejżyj bilans swoich zysków i strat.</a>
                     <br>
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Zakres
-                    </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
-                                        1000 zł</label>
-                                    <input type="range" class="form-range" min="0" max="1000" step="1"
-                                        id="customRange1">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Zamknij</button>
-                                    <button type="button" class="btn btn-primary">Akceptuj</button>
+                    <form action="strona_startowa.php">
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Zakres
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
+                                            1000 zł</label>
+                
+                                        <input type="range" class="form-range" min="0" max="1000" step="1"
+                                            id="range_weight" name="amount_min" value="0" oninput="range_weight_disp.value = range_weight.value">
+                                        <br>
+                                        <output style="color:black;" id="range_weight_disp"></output>
+                                        <br>
+                                        <?php
+                                            //<input type="text" id="textInput" value="">
+                                        ?>
+
+                                        <input type="range" class="form-range" min="0" max="1000" step="1"
+                                            id="range_weight2" name="amount_min" value="0" oninput="range_weight_disp2.value = range_weight2.value">
+                                        <br>
+                                        <output style="color:black;" id="range_weight_disp2"></output>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Zamknij
+                                        <?php
+                                            $foo = "waza";
+                                            echo $foo;
+                                            echo '<div class ="text-center mb-4 form-control">'.$foo.'</div>';
+                                        ?>
+                                        
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Akceptuj</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <br>
-
-                    <form action="strona_startowa.php">
 
                         <p>
                             <label for="Kategoria">Kategoria:</label>
