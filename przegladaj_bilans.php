@@ -109,80 +109,27 @@
 
 
                     <form method="post">
-                        <?php
-                        /*
-
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Zakres
-                        </button>
-
-                        <!-- Modal -->
-                        
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="customRange1" class="form-label" style="color: black;">Zakres od 0 do
-                                            1000 zł</label>
-                
-                                        <input type="range" class="form-range" min="0" max="1000" step="1"
-                                            id="range_weight" name="amount_min" value="0" oninput="range_weight_disp.value = range_weight.value">
-                                        <br>
-                                        <output style="color:black;" id="range_weight_disp"></output>
-                                        <br>
-
-                                        
-
-                                        <input type="range" class="form-range" min="0" max="1000" step="1"
-                                            id="range_weight2" name="amount_max" value="0" oninput="range_weight_disp2.value = range_weight2.value">
-                                        <br>
-                                        <output style="color:black;" id="range_weight_disp2"></output>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" name="range_unset" data-bs-dismiss="modal">Zamknij </button>
-                                        <button type="button" class="btn btn-primary" name="range_set" data-bs-dismiss="modal">Akceptuj</button>
-                                    </div>
-
-
-                                    
-                                            if (isset($_POST["range_set"])){
-                                                echo '<div class ="text-center mb-4 form-control">'.$_SESSION['range_set'].'</div>';
-                                            } else if (isset($_POST["range_unset"])){
-                                            // "Delete" clicked
-                                            }
-                                    
-
-                                    
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                        */
-                        ?>
-
 
                         <p>
                             <label for="Kategoria">Kategoria:</label>
-                            <select name="Kategoria" id="Kategoria">
+                            <select name="Kategoria" id="Kategoria" onchange="myFunction()">
                                 <option value="biezacymiesiac" selected>Bieżący miesiąc</option>
                                 <option value="poprzednimiesiac">Poprzedni miesiąc</option>
                                 <option value="biezacyrok">Bieżący rok</option>
-                                <?php
-                                //<option value="niestandardowy">Niestandardowy</option>
-                                ?>
+                                <option value="niestandardowy">Niestandardowy</option>
                                 
                             </select>
+                        </p>
+                        </script>
+
+                        <p id="data_start">
+                            <label for="data">Wybierz datę początkową: </label>
+                            <input type="date" id="data" value="<?php echo date('Y-m-d');?>" name="date_start" required>
+                        </p>
+
+                        <p id="data_start">
+                            <label for="data">Wybierz datę końcową: </label>
+                            <input type="date" id="data" value="<?php echo date('Y-m-d');?>" name="date_end" required>
                         </p>
 
                         <p>
@@ -208,19 +155,12 @@
                         echo "Gotowy raport:"."<br />\n";
 
                         $correct_data=true;
-                        //$amount_min = $_POST['amount_min'];
-                        //$amount_max = $_POST['amount_min'];
-                        $amount_min = 0;
-                        $amount_max = 1000;
-                        $date = "2022-04-24";
-
                             
                         $category = $_POST['Kategoria'];
                         //echo "Kategoria to ".$category." ".$_SESSION['dataod']."<br />\n";
 
                         if($category=='biezacymiesiac')
                         {
-                            
                             $biezacymiesiac = date('m');
                             $biezacyrok = date('Y');
                             $iloscdni = date('t');
@@ -228,8 +168,7 @@
                             $dateFrom = "$biezacyrok".'-'."$biezacymiesiac".'-01';
                             $dateTo = "$biezacyrok".'-'."$biezacymiesiac".'-'."$iloscdni";
                         }
-
-                        if($category=='poprzednimiesiac')
+                        else if($category=='poprzednimiesiac')
                         {
                             $poprzednimiesiac = date('m') -1;
                             if($poprzednimiesiac < 10)
@@ -246,13 +185,17 @@
                             $dateFrom =  "$rok".'-'."$poprzednimiesiac".'-01';
                             $dateTo =  "$rok".'-'."$poprzednimiesiac".'-'."$iloscdnipoprzmies";
                         }
-
-                        if($category=='biezacyrok')
+                        else if($category=='biezacyrok')
                         {
                             $biezacyrok = date('Y');
                             $dateFrom = "$biezacyrok".'-01-01';
                             $dateTo = "$biezacyrok".'-12-31';
                             
+                        }
+                        else if($category=='niestandardowy')
+                        {
+                            $dateFrom = $_POST['date_start'];
+                            $dateTo = $_POST['date_end'];
                         }
 
                         echo "Wybrano zakres od ".$dateFrom." do ".$dateTo."<br />\n";
