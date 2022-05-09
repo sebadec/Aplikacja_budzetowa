@@ -25,10 +25,6 @@
 --primary: blueviolet;
 }
 
-body{
-
-}
-
 img {
 max-width: 100px;
 height: auto; 
@@ -47,10 +43,6 @@ color: blueviolet;
 text-decoration: none;
 background-color: var(--primary);
 color: aliceblue;
-}
-
-.dropdown-item{
-
 }
 
 .blockquote-footer {
