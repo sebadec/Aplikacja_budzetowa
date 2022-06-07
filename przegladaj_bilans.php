@@ -212,27 +212,27 @@
                             //if($wynik->fetchColumn() > 0) //błąd muszę poprawić
                             if (1==1)
                             {
-                                echo "<table class ='table table-bordered'  border=1 style='color: white; background-color: #a72896;'>";
+                                echo "<table class ='table table-bordered' border=1 style='color: white; background-color: #a72896; font-size: 15px; color:white;'>";
                                 echo "<thead>";
-                                echo "<th colspan='2'>"."PRZYCHODY"."</th>";
+                                echo "<th colspan='2' style='font-size: 15px; color:white;'>"."PRZYCHODY"."</th>";
                                 echo "</thead>";
                                 echo "<thead>";
-                                echo "<th>"."Kategoria"."</th>";
-                                echo "<th class ='text-center'>"."Kwota"."</th>";
+                                echo "<th style='font-size: 15px; color:white;'>"."Kategoria"."</th>";
+                                echo "<th class ='text-center' style='font-size: 15px; color:white;'>"."Kwota"."</th>";
                                 echo "</thead>";
                                 
                                 while ($row_income = $query_income->fetch())
                                 {
                                     echo "<tr>";
-                                    echo "<td style='width:33%;' >".$row_income['kategoria']."</td>";
-                                    echo "<td class='text-center'>".$row_income['suma']."</td>";
+                                    echo "<td style='width:33%; font-size: 15px; color:white;' >".$row_income['kategoria']."</td>";
+                                    echo "<td class='text-center' style='font-size: 15px; color:white;'>".$row_income['suma']."</td>";
                                     echo "</tr>";
                                 }
                                 $query_income_sum = $db->query("SELECT SUM(amount) AS suma FROM incomes,incomes_category_assigned_to_users WHERE incomes.user_id = $userId AND incomes_category_assigned_to_users.id = incomes.income_category_assigned_to_user_id  AND date_of_income BETWEEN '$dateFrom' AND '$dateTo'");
                                 $sum_income = $query_income_sum->fetch();
                                 echo "<tr>";
-                                echo "<td style='width:33%;'><h4>"."SUMA"."</h4></td>";
-                                echo "<td class='text-center'><h4>".$sum_income['suma']."</h4></td>";
+                                echo "<td style='width:33%; font-size: 15px; color:white;'><h4>"."SUMA"."</h4></td>";
+                                echo "<td class='text-center' style='font-size: 15px; color:white;'><h4>".$sum_income['suma']."</h4></td>";
                                 echo "</tr>";	
                                 echo"</table>";
                             }
@@ -241,27 +241,27 @@
                             //if($wynik->fetchColumn() > 0) //błąd muszę poprawić
                             if (1==1)
                             {
-                                echo "<table class ='table table-bordered'  border=1 style='color: white; background-color: #a72896;'>";
+                                echo "<table class ='table table-bordered'  border=1 style='color: white; background-color: #a72896; font-size: 15px; color:white;'>";
                                 echo "<thead>";
-                                echo "<th colspan='2'>"."WYDATKI"."</th>";
+                                echo "<th colspan='2' style='font-size: 15px; color:white;'>"."WYDATKI"."</th>";
                                 echo "</thead>";
                                 echo "<thead>";
-                                echo "<th>"."Kategoria"."</th>";
-                                echo "<th class ='text-center'>"."Kwota"."</th>";
+                                echo "<th style='font-size: 15px; color:white;'>"."Kategoria"."</th>";
+                                echo "<th class ='text-center' style='font-size: 15px; color:white;'>"."Kwota"."</th>";
                                 echo "</thead>";
                                 
                                 while ($row_expanse = $query_expanse->fetch())
                                 {
                                     echo "<tr>";
-                                    echo "<td style='width:33%;' >".$row_expanse['kategoria']."</td>";
-                                    echo "<td class='text-center'>"."-".$row_expanse['suma']."</td>";
+                                    echo "<td style='width:33%; font-size: 15px; color:white;' >".$row_expanse['kategoria']."</td>";
+                                    echo "<td class='text-center' style='font-size: 15px; color:white;'>"."-".$row_expanse['suma']."</td>";
                                     echo "</tr>";
                                 }
                                 $query_expanse_sum = $db->query("SELECT SUM(amount) AS suma FROM expenses,expenses_category_assigned_to_users WHERE expenses.user_id = $userId AND expenses_category_assigned_to_users.id = expenses.expense_category_assigned_to_user_id  AND date_of_expense BETWEEN '$dateFrom' AND '$dateTo'");
                                 $sum_expanse = $query_expanse_sum->fetch();
                                 echo "<tr>";
-                                echo "<td style='width:33%;'><h4>"."SUMA"."</h4></td>";
-                                echo "<td class='text-center'><h4>"."-".$sum_expanse['suma']."</h4></td>";
+                                echo "<td style='width:33%; style='font-size: 15px; color:white;'><h4>"."SUMA"."</h4></td>";
+                                echo "<td class='text-center' style='font-size: 15px; color:white;'><h4>"."-".$sum_expanse['suma']."</h4></td>";
                                 echo "</tr>";	
                                 echo"</table>";
                             }
@@ -282,20 +282,20 @@
 
                             echo "<table class ='table table-bordered'  border=1 style='color: white; background-color: #a72896;'>";
                             echo "<thead>";
-                            echo "<th style='width:33%;'>"."Twój bilans wynosi:"."</th>";
-                            echo "<th class ='text-center'>".$bilans."</th>";
+                            echo "<th style='width:33%; font-size: 15px; color:white;'>"."Twój bilans wynosi:"."</th>";
+                            echo "<th class ='text-center' style='font-size: 15px; color:white;'>".$bilans."</th>";
                             echo "<thead>";
                             if ($bilans > 0)
                             {
-                                echo "<th colspan='2'>"."Gratuluję, jesteś na plusie :) "."</th>";
+                                echo "<th colspan='2' style='font-size: 15px; color:white;'>"."Gratuluję, jesteś na plusie :) "."</th>";
                             }
                             else if ($bilans < 0)
                             {
-                                echo "<th colspan='2'>"."Nie jest aż tak źle! Głowa do góry :) "."</th>";
+                                echo "<th colspan='2' style='font-size: 15px; color:white;'>"."Nie jest aż tak źle! Głowa do góry :) "."</th>";
                             }
                             else
                             {
-                                echo "<th colspan='2'>"."Zawsze mogło być gorzej..."."</th>";
+                                echo "<th colspan='2 style='font-size: 15px; color:white;'>"."Zawsze mogło być gorzej..."."</th>";
                             }
                             
                             echo "</thead>";
@@ -305,9 +305,88 @@
                     }
 
 					?>
+
+                    <!--Load the AJAX API-->
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+
+                    // Load the Visualization API and the corechart package.
+                    google.charts.load('current', {'packages':['corechart']});
+
+                    // Set a callback to run when the Google Visualization API is loaded.
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    // Callback that creates and populates a data table,
+                    // instantiates the pie chart, passes in the data and
+                    // draws it.
+                    function drawChart() {
+
+                        // Create the data table.
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Topping');
+                        data.addColumn('number', 'Slices');
+                        data.addRows([
+                        [
+                        <?php
+                        //"DSADAS",
+                        echo "\"Test_01\",";  
+                        echo $bilans*-1;
+                        //echo $row_income['suma'];
                         
-                                        
-                    </div>
+                        /*
+                        $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
+
+                        while ($row_expanse = $query_expanse->fetch())
+                        {
+                            //echo $row_expanse['kategoria'].$row_expanse['suma'];
+                            echo $row_expanse['suma'];
+                        }
+                        
+                        
+                        $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
+                        
+                        while ($row_income = $query_income->fetch())
+                        {
+                            //echo $row_income['kategoria'].$row_income['suma'];
+                            //echo $row_income['suma'];
+                            //echo $row_expanse['suma'];
+                        }
+                        */
+                        
+
+                        ?>
+                        ],
+                        [<?php echo "\"Test_02\",".$bilans*-1;?>],
+
+                        <?php //echo "[".\"Test_02\",".$bilans*-1."],";?>
+                        <?php echo "["."\"Test_03\",".$bilans*-1;
+                        echo "],";
+                        
+                        ?>
+
+                        <?php echo "["."\"Test_04\","."$bilans*-1"."],";
+                        
+                        ?>
+
+                        ['Onionssws', 100]
+                        ]);
+
+                        // Set chart options
+                        var options = {'title':'How Much Pizza I Ate Last Night',
+                                    'width':400,
+                                    'height':300};
+
+                        // Instantiate and draw our chart, passing in some options.
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                        chart.draw(data, options);
+                    }
+                    </script>
+
+
+                    
+                    <!--Div that will hold the pie chart-->
+                    <div id="chart_div"></div>
+                                            
 
 
 
