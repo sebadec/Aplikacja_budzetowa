@@ -326,12 +326,7 @@
                         data.addColumn('string', 'Topping');
                         data.addColumn('number', 'Slices');
                         data.addRows([
-                        [
                         <?php
-                        //"DSADAS",
-                        echo "\"Test_01\",";  
-                        echo $bilans*-1;
-                        //echo $row_income['suma'];
                         
                         /*
                         $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
@@ -353,26 +348,35 @@
                         }
                         */
                         
-
                         ?>
-                        ],
-                        [<?php echo "\"Test_02\",".$bilans*-1;?>],
 
                         <?php //echo "[".\"Test_02\",".$bilans*-1."],";?>
-                        <?php echo "["."\"Test_03\",".$bilans*-1;
-                        echo "],";
-                        
+
+                        <?php //echo "["."\"Test_04\","."$bilans*-1"."],";
                         ?>
 
-                        <?php echo "["."\"Test_04\","."$bilans*-1"."],";
+                        <?php 
+
+                        $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
+                        
+                        while ($row_income = $query_income->fetch())
+                        {
+                            /*
+                            echo "[";
+                            echo "\"";
+                            echo $row_income['kategoria'];
+                            echo "\",";
+                            echo $row_income['suma'];
+                            echo "],";
+                            */
+                            echo "["."\"".$row_income['kategoria']."\",".$row_income['suma']."],";
+                        }
                         
                         ?>
-
-                        ['Onionssws', 100]
                         ]);
 
                         // Set chart options
-                        var options = {'title':'How Much Pizza I Ate Last Night',
+                        var options = {'title':'Przychody',
                                     'width':400,
                                     'height':300};
 
@@ -381,14 +385,45 @@
                         chart.draw(data, options);
                     }
                     </script>
-
-
-                    
+                
                     <!--Div that will hold the pie chart-->
                     <div id="chart_div"></div>
-                                            
 
+                    <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
 
+                    function drawChart() {
+
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Topping');
+                        data.addColumn('number', 'Slices');
+                        data.addRows([
+                        <?php 
+                        $query_expanse = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM expenses, expenses_category_assigned_to_users AS cat WHERE expenses.user_id = '$userId' AND cat.id = expenses.expense_category_assigned_to_user_id AND date_of_expense BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
+                        while ($row_expanse = $query_expanse->fetch())
+                        {
+                            echo "["."\"".$row_expanse['kategoria']."\",".$row_expanse['suma']."],";
+                        }
+                        ?>
+                        ]);
+
+                        var options = {'title':'Wydatki',
+                                    'height':500,
+                                    backgroundColor: '#8a2be2',
+                                    //titlePosition: 'none',
+                                    titleTextStyle:  {color: 'white', fontSize: 20, bold: true},
+                                    chartArea:{left:10,top:50,width:'100%',height:'80%'},
+                                    legend: {position: 'bottom', textStyle: {color: 'white', fontSize: 16}},
+                                };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_expanse'));
+                        chart.draw(data, options);
+                    }
+                    </script>
+                    <h2 class="piechartheader">Wydatki
+                    <div id="chart_expanse"></div>
+                    </h2>
 
                 </main>
             </div>
