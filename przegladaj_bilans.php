@@ -295,7 +295,7 @@
                             }
                             else
                             {
-                                echo "<th colspan='2 style='font-size: 15px; color:white;'>"."Zawsze mogło być gorzej..."."</th>";
+                                echo "<th colspan='2' style='font-size: 15px; color:white;'>"."Zawsze mogło być gorzej..."."</th>";
                             }
                             
                             echo "</thead>";
@@ -306,54 +306,19 @@
 
 					?>
 
-                    <!--Load the AJAX API-->
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script type="text/javascript">
 
-                    // Load the Visualization API and the corechart package.
                     google.charts.load('current', {'packages':['corechart']});
 
-                    // Set a callback to run when the Google Visualization API is loaded.
                     google.charts.setOnLoadCallback(drawChart);
 
-                    // Callback that creates and populates a data table,
-                    // instantiates the pie chart, passes in the data and
-                    // draws it.
                     function drawChart() {
 
-                        // Create the data table.
                         var data = new google.visualization.DataTable();
                         data.addColumn('string', 'Topping');
                         data.addColumn('number', 'Slices');
                         data.addRows([
-                        <?php
-                        
-                        /*
-                        $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
-
-                        while ($row_expanse = $query_expanse->fetch())
-                        {
-                            //echo $row_expanse['kategoria'].$row_expanse['suma'];
-                            echo $row_expanse['suma'];
-                        }
-                        
-                        
-                        $query_income = $db->query("SELECT name AS kategoria, SUM(amount) AS suma FROM incomes, incomes_category_assigned_to_users AS cat WHERE incomes.user_id = '$userId' AND cat.id = incomes.income_category_assigned_to_user_id AND date_of_income BETWEEN '$dateFrom' AND '$dateTo' GROUP BY name DESC");
-                        
-                        while ($row_income = $query_income->fetch())
-                        {
-                            //echo $row_income['kategoria'].$row_income['suma'];
-                            //echo $row_income['suma'];
-                            //echo $row_expanse['suma'];
-                        }
-                        */
-                        
-                        ?>
-
-                        <?php //echo "[".\"Test_02\",".$bilans*-1."],";?>
-
-                        <?php //echo "["."\"Test_04\","."$bilans*-1"."],";
-                        ?>
 
                         <?php 
 
@@ -361,33 +326,29 @@
                         
                         while ($row_income = $query_income->fetch())
                         {
-                            /*
-                            echo "[";
-                            echo "\"";
-                            echo $row_income['kategoria'];
-                            echo "\",";
-                            echo $row_income['suma'];
-                            echo "],";
-                            */
                             echo "["."\"".$row_income['kategoria']."\",".$row_income['suma']."],";
                         }
                         
                         ?>
                         ]);
 
-                        // Set chart options
                         var options = {'title':'Przychody',
-                                    'width':400,
-                                    'height':300};
+                                    'height':500,
+                                    backgroundColor: '#290046',
+                                    titleTextStyle:  {color: 'white', fontSize: 20, bold: true},
+                                    chartArea:{left:10,top:50,width:'100%',height:'70%'},
+                                    legend: {position: 'bottom', textStyle: {color: 'white', fontSize: 16}},
+                                    titlePosition: 'none',
+                                };
 
-                        // Instantiate and draw our chart, passing in some options.
                         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
                         chart.draw(data, options);
                     }
                     </script>
                 
-                    <!--Div that will hold the pie chart-->
+                    <h2 class="piechartheader">Przychody
                     <div id="chart_div"></div>
+                    </h2>
 
                     <script type="text/javascript">
                     google.charts.load('current', {'packages':['corechart']});
@@ -410,11 +371,11 @@
 
                         var options = {'title':'Wydatki',
                                     'height':500,
-                                    backgroundColor: '#8a2be2',
-                                    //titlePosition: 'none',
+                                    backgroundColor: '#290046',
                                     titleTextStyle:  {color: 'white', fontSize: 20, bold: true},
-                                    chartArea:{left:10,top:50,width:'100%',height:'80%'},
+                                    chartArea:{left:10,top:50,width:'100%',height:'70%'},
                                     legend: {position: 'bottom', textStyle: {color: 'white', fontSize: 16}},
+                                    titlePosition: 'none',
                                 };
 
                         var chart = new google.visualization.PieChart(document.getElementById('chart_expanse'));
