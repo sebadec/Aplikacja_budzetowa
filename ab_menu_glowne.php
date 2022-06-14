@@ -59,9 +59,9 @@ if (isset($_POST['email'])) {
         $wiersz = $dane->fetch(PDO::FETCH_ASSOC);
         $userId = $wiersz['id'];
 
-        if(($db->query("INSERT INTO expenses_category_assigned_to_users SELECT 'NULL','$userId', name FROM expenses_category_default")) 
-        &&($db->query("INSERT INTO payment_methods_assigned_to_users SELECT 'NULL','$userId', name FROM payment_methods_default"))
-        &&($db->query("INSERT INTO incomes_category_assigned_to_users SELECT 'NULL','$userId', name FROM incomes_category_default")))
+        if(($db->query("INSERT INTO expenses_category_assigned_to_users SELECT NULL, '$userId', name FROM expenses_category_default")) 
+        &&($db->query("INSERT INTO payment_methods_assigned_to_users SELECT NULL, '$userId', name FROM payment_methods_default"))
+        &&($db->query("INSERT INTO incomes_category_assigned_to_users SELECT NULL, '$userId', name FROM incomes_category_default")))
         {
             $_SESSION['udanarejestracja']="Dziękujemy za rejestrację, możesz się już zalogować!";
         }
