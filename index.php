@@ -1,3 +1,84 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged_id'])) {
+	header('Location: ab_menu_glowne_uzytkownik.php');
+	exit();
+}
+
+if (isset($_POST['email'])) {
+
+    $correct_data = true;
+
+    $imie = filter_input(INPUT_POST, 'imie');
+
+        if((strlen($imie)<3) || (strlen($imie)>20))
+        {
+            $correct_data= false;
+            $_SESSION['bad_imie'] = "Imie musi posiadać od 3 do 20 znaków!";
+        }
+
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+        if (empty($email)) {
+            
+            $correct_data= false;
+            $_SESSION['bad_email'] = "E-mail jest nieprawidłowy!";
+            
+        }
+
+    require_once 'database.php';
+
+        $email_on_base = $db->query("SELECT email FROM users WHERE email='$email'")->fetch();
+
+        if (empty($email_on_base)) {
+            //$_SESSION['bad_email2'] = "E-mail poprawny!";
+        }
+        else {
+            $correct_data= false;
+            $_SESSION['bad_email2'] = "E-mail jest już w bazie!";
+        }
+
+    $password = filter_input(INPUT_POST, 'password');
+
+        if((strlen($password)<5) || (strlen($password)>20))
+        {
+            $correct_data= false;
+            $_SESSION['bad_password'] = "Hasło musi posiadać od 5 do 20 znaków";
+        }
+
+    $password2 = filter_input(INPUT_POST, 'password');
+
+    if(($password)==($password))
+    {
+        $correct_data= false;
+        $_SESSION['bad_password2'] = "Wypisano różne hasła";
+    }
+
+    if ($correct_data == true) {
+
+        $query = $db->prepare('INSERT INTO users VALUES (NULL, :imie, :password, :email)');
+        $query->bindValue(':imie', $imie, PDO::PARAM_STR);
+        $query->bindValue(':password', $password, PDO::PARAM_STR);
+        $query->bindValue(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+
+        $dane = $db->query("SELECT * FROM users WHERE email = '$email'");
+        $wiersz = $dane->fetch(PDO::FETCH_ASSOC);
+        $userId = $wiersz['id'];
+
+        if(($db->query("INSERT INTO expenses_category_assigned_to_users SELECT NULL, '$userId', name FROM expenses_category_default")) 
+        &&($db->query("INSERT INTO payment_methods_assigned_to_users SELECT NULL, '$userId', name FROM payment_methods_default"))
+        &&($db->query("INSERT INTO incomes_category_assigned_to_users SELECT NULL, '$userId', name FROM incomes_category_default")))
+        {
+            $_SESSION['udanarejestracja']="Dziękujemy za rejestrację, możesz się już zalogować!";
+        }
+    
+    } 
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -37,7 +118,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.php">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="#">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -55,8 +136,204 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="" id="floating-menu">
 
 
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#logowanie" type="button" role="tab" aria-controls="home"
+                                aria-selected="true">Logowanie</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="rejestracja-tab" data-bs-toggle="tab"
+                                data-bs-target="#rejestracja" type="button" role="tab" aria-controls="rejestracja"
+                                aria-selected="false">Rejestracja</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade" id="logowanie" role="tabpanel"
+                            aria-labelledby="home-tab">
+
+                            <form method="post" action="ab_menu_glowne_uzytkownik.php">
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
+                                        email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    name="email"
+                                    >
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="exampleInputPassword1" class="form-label" id="text-budget">Hasło</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                    name="password"
+                                    >
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="text-budget">Zaloguj</button>
+
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_attempt'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.'<p>Niepoprawne dane!</p>';
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_attempt']);
+                                    }
+                                    ?>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+
+                        <div class="tab-pane fade show active" id="rejestracja" role="tabpanel" aria-labelledby="rejestracja-tab">
+
+                            <form method="post">
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Podaj imię
+                                    </label>
+                                    <input type="text" class="form-control" id="exampleInputText1" aria-describedby="TextHelp" placeholder="imię"
+                                    name="imie"
+                                    >
+                                </div>
+
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_imie'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.$_SESSION['bad_imie'];
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_imie']);
+                                    }
+                                    ?>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="exampleInputEmail1" class="form-label" id="text-budget">Adres
+                                        email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email"
+                                    name="email"
+                                    >
+                                </div>
+
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_email'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.$_SESSION['bad_email'];
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_email']);
+                                    }
+                                    ?>
+                                </div>
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_email2'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.$_SESSION['bad_email2'];
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_email2']);
+                                    }
+                                    ?>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="exampleInputPassword1" class="form-label" id="text-budget">Hasło</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="hasło"
+                                    name="password"
+                                    >
+                                </div>
+                                <div class="mb-4">
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Powtórz hasło"
+                                    name="password2"
+                                    >
+                                </div>
+
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_password'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.$_SESSION['bad_password'];
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_password']);
+                                    }
+                                    ?>
+                                </div>
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['bad_password2'])) {
+                                    echo '<div class ="alert alert-dismissible text-center mb-4 form-control" role="alert">'.$_SESSION['bad_password2'];
+                                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                                    echo '</div>';
+                                    unset($_SESSION['bad_password2']);
+                                    }
+                                    ?>
+                                </div>
+
+                                
+
+                                <button type="submit" class="btn btn-primary" id="text-budget2">Zarejestruj</button>
+
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['udanarejestracja'])) {
+                                    echo '<div class ="text-center mb-4 form-control">'.$_SESSION['udanarejestracja'].'</div>';
+                                    unset($_SESSION['udanarejestracja']);
+                                    }
+                                    ?>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <main class="" id="border">
+
+                    <div>
+                        <img src="./images/budzet-domowy-poradnik.jpg" class="img-fluid" id="img-on-menu"
+                            alt="Responsive image">
+
+
+
+                    </div>
+
+
+                    <h1>Budżet osobisty</h1>
+
+                    <div id="text-budget">...to jedno z tych pojęć w finansach osobistych, wokół którego
+                        jest
+                        sporo nieporozumień. Wiele osób uważa, że chodzi tu o żmudne spisywanie wydatków, z którego
+                        niewiele wynika. Tymczasem budżet to coś zupełnie innego. Gdy robi się
+                        go dobrze – niesamowicie pomaga w zadbaniu o własne finanse. Gdy nie robi się go wcale – mnóstwo
+                        pieniędzy przecieka nam
+                        przez palce, a cele finansowe osiągamy wolniej. Gdy robi się go źle – łatwo jest się zniechęcić
+                        i popełnić finansowe
+                        błędy. Właśnie dlatego powstała ta aplikacja, aby pomóc każdemu zaplanować swoje finanse!</div>
+                    <br>
+
+
+                    <br>
+                </main>
+            </div>
+        </div>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

@@ -27,13 +27,13 @@ if (!isset($_SESSION['logged_id'])) {
 			unset($_SESSION['bad_attempt']);
 		} else {
 			$_SESSION['bad_attempt'] = true;
-			header('Location: ab_menu_glowne.php');
+			header('Location: index.php');
 			exit();
 		}
 			
 	} else {
 		
-		header('Location: ab_menu_glowne.php');
+		header('Location: index.php');
 		exit();
 	}
 }

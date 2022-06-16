@@ -1,8 +1,8 @@
 <?php
 
 return [
-	'host' => 'localhost', 
-	'user' => 'root',
-	'password' => '',
-	'database' => 'projekt_bazy_danych'
+	'host' => 'budget.sebastian-dec.profesjonalnyprogramista.pl.mysql.dhosting.pl', 
+	'user' => 'aun9ao_budgetse',
+	'password' => 'Zeexohthiki0',
+	'database' => 'ioco9j_budgetse'
 ];

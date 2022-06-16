@@ -4,7 +4,7 @@
 	
 	if (!isset($_SESSION['logged_id']))
 	{
-		header('Location: ab_menu_glowne.php');
+		header('Location: index.php');
 		exit();
 	}
 	
@@ -79,7 +79,7 @@
                         <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown03"
                             data-bs-toggle="dropdown" aria-expanded="false"">Projekty</a>
                         <ul class=" dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item active" href="ab_menu_glowne.php">Aplikacja budżetowa</a></li>
+                    <li><a class="dropdown-item active" href="index.php">Aplikacja budżetowa</a></li>
                     <li><a class="dropdown-item" href="#">Gra ping-pong</a></li>
                     <li><a class="dropdown-item" href="#">Książka adresowa</a></li>
                 </ul>
@@ -118,7 +118,7 @@
                             <a href="ustawienia.php">Ustawienia</a>
                         </li>
                         <li>
-                            <a href="ab_menu_glowne.php">Wyloguj się</a>
+                            <a href="index.php">Wyloguj się</a>
                         </li>
                     </ul>
 
